@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div></div>
+
+
+
+    <!-- Include Handlebars from a CDN -->
+<script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+<script>
+  // compile the template
+  const { products } = require('../data/data.js');
+  var template = Handlebars.compile(`
+  {{#each html}}
+    <div>
+        <h1>{{name}}</h1>
+        <p>{{id}}</p>
+        <p>{{description}}</p>
+        <p>{{price}}</p>
+        <p>{{image}}</p>
+    </div>
+    {{/each}}
+  `);
+  // execute the compiled template and print the output to the console
+  
+  const html = template([...products]);
+
+  document.querySelector('div').innerHTML = html
+</script>
+</body>
+</html>
